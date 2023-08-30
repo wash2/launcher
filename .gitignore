@@ -3,6 +3,7 @@ target/
 vendor/
 vendor.tar
 debian/*
+result
 !debian/source
 !debian/changelog
 !debian/control

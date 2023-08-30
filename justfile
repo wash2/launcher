@@ -61,22 +61,18 @@ install-bin:
 
 # Install pop-launcher plugins
 install-plugins:
-    #!/usr/bin/env sh
-    set -ex
-    for plugin in {{plugins}}; do
-        dest={{plugin-dir}}${plugin}
-        mkdir -p ${dest}
-        install -Dm0644 plugins/src/${plugin}/*.ron ${dest}
-        ln -sf {{bin-path}} {{plugin-dir}}${plugin}/$(echo ${plugin} | sed 's/_/-/')
+    for plugin in {{plugins}}; do \
+        dest={{plugin-dir}}${plugin}; \
+        mkdir -p ${dest}; \
+        install -Dm0644 plugins/src/${plugin}/*.ron ${dest}; \
+        ln -sf {{bin-path}} {{plugin-dir}}${plugin}/$(echo ${plugin} | sed 's/_/-/'); \
     done
 
 # Install pop-launcher scripts
 install-scripts:
-    #!/usr/bin/env sh
-    set -ex
-    mkdir -p {{scripts-dir}}
-    for script in {{justfile_directory()}}/scripts/*; do
-        cp -r ${script} {{scripts-dir}}
+    mkdir -p {{scripts-dir}}; \
+    for script in {{justfile_directory()}}/scripts/*; do \
+        cp -r ${script} {{scripts-dir}}; \
     done
 
 # Uninstalls everything (requires same arguments as given to install)
