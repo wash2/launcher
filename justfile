@@ -65,7 +65,7 @@ install-plugins:
         dest={{plugin-dir}}${plugin}; \
         mkdir -p ${dest}; \
         install -Dm0644 plugins/src/${plugin}/*.ron ${dest}; \
-        ln -sf {{bin-path}} {{plugin-dir}}${plugin}/$(echo ${plugin} | sed 's/_/-/'); \
+        install -Dm0755 target/release/pop-launcher-bin {{plugin-dir}}${plugin}/$(echo ${plugin} | sed 's/_/-/'); \
     done
 
 # Install pop-launcher scripts
